@@ -22,7 +22,7 @@ def quizz_post(quizz_id):
     if not name:
         return "Invalid Name"
     dt = datetime.now().strftime("%d_%m_%Y-%H:%M:%S")
-    output_f = "%s-%s.txt" %(name, dt)
+    output_f = "answers/%s-%s.txt" %(name, dt)
     
     points = 0
     
