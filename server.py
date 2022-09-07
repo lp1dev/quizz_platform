@@ -18,6 +18,7 @@ def quizz_view(quizz_id):
 
 @app.route("/quizz/<quizz_id>", methods=["POST"])
 def quizz_post(quizz_id):
+    print(request.form)
     name = request.form.get('name')
     if not name:
         return "Invalid Name"
@@ -28,13 +29,14 @@ def quizz_post(quizz_id):
     
     with open(output_f, "a+") as f:
         f.write('Student : %s\n' %name)
-        for question in quizzes[int(quizz_id)].questions:
+        for q_id, question in enumerate(quizzes[int(quizz_id)].questions):
             f.write('----\n\n'+question.title+'\n')
             valid = True
             for answ_id, answer in enumerate(question.answers):
-                if answer.get('is_right') and request.form.get(answer.get('title')) != 'on':
+                print(request.form)
+                if answer.get('is_right') and request.form.get('%s_%s' %(q_id, answ_id)) != 'on':
                     valid = False
-                if not answer.get('is_right') and request.form.get(answer.get('title')) == 'on':
+                if not answer.get('is_right') and request.form.get('%s_%s' %(q_id, answ_id)) == 'on':
                     valid = False
                 f.write(' - '+answer.get('title')+ ('[OK]' if valid else '[KO]') + '\n')
             if valid:

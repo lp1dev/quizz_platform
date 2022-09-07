@@ -45,9 +45,9 @@ class Quizz:
     def html(self):
         output = f"""<h1>{self.title}</h1>
 <form method="POST"><h3>0 - Indiquez votre NOM + Prénom (utilisés pour la notation)</h3><div><input type="text" name="name" id="name"/></div>"""
-        for question in self.questions:
+        for q_id, question in enumerate(self.questions):
             output += f"""<h3>{question.title}</h3>"""
             for count, answer in enumerate(question.answers):
-                output +=  f"""<div><input type="checkbox" id="{count}" name="{answer['title']}"><label>{answer['title']}</label></div>"""
+                output +=  f"""<div><input type="checkbox" id="{count}" name="{q_id}_{count}"><label>{answer['title']}</label></div>"""
         output += "<br/><div><input type='submit' value='Valider mes réponses'/></div></form>"
         return output
