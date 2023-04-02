@@ -1,3 +1,5 @@
+from flask import escape
+
 class Question:
     def __init__(self, title):
         self.title = title
@@ -48,6 +50,6 @@ class Quizz:
         for q_id, question in enumerate(self.questions):
             output += f"""<h3>{question.title}</h3>"""
             for count, answer in enumerate(question.answers):
-                output +=  f"""<div><input type="checkbox" id="{count}" name="{q_id}_{count}"><label>{answer['title']}</label></div>"""
+                output +=  f"""<div><input type="checkbox" id="{count}" name="{q_id}_{count}"><label>{escape(answer['title'])}</label></div>"""
         output += "<br/><div><input type='submit' value='Valider mes réponses'/></div></form>"
         return output
