@@ -1,8 +1,31 @@
 from flask import escape
+import csv
+
+""" CSV HEADER 
+
+Question,Question Type (multiple-choice or multi-select),Answer Option 1,Answer Option 2,Answer Option 3,Answer Option 4,Answer Option 5,Answer Option 6,Answer Option 7,Answer Option 8,Answer Option 9,Answer Option 10,Answer Option 11,Answer Option 12,Answer Option 13,Answer Option 14,Answer Option 15,Correct Response,Explanation,Knowledge Area
+
+"""
+
+def parse(file):
+    csv_reader = csv.reader(file, delimiter=',')
+    questions = []
+    for line in csv_reader:
+        if len(line) != 20:
+            raise Exception("CSV file does not contain 20 fields in "+line)
+        else:
+            q = Question(line[0], line[1], line[18], line[19])
+            for index, question in enumerate(line[2:-3]):
+                q.add_answer(question, index == int(line[17]))
+            questions.append(q)
+    return
 
 class Question:
-    def __init__(self, title):
+    def __init__(self, title, type, explanation, knowledge_area):
         self.title = title
+        self.type = type
+        self.explanation = explanation
+        self.knowledge_area = knowledge_area
         self.answers = []
         return
 
@@ -13,32 +36,15 @@ class Question:
         return self.title + "%s" %self.answers
 
 class Quizz:
-    def __init__(self, filename):
+    def __init__(self, title, filename):
         self.questions = []
+        self.title = title
         with open(filename) as f:
-            self.parse(f.readlines())
+            self.parse(f)
         return
 
-    def parse(self, content):
-        q = None
-        commented = False
-        for line in content:
-            if "<!--" in line:
-                commented = True
-            if "-->" in line:
-                commented = False
-            if commented:
-                break
-            if line.strip().startswith('### '):
-                if q and q not in self.questions:
-                    self.questions.append(q)
-                q = Question(line.strip()[3:])
-            elif line.strip().startswith('# '):
-                self.title = line.strip()[2:]
-            elif q and line.strip().startswith('- '):
-                q.add_answer(line.strip()[2:].replace('#true', ''), "#true" in line)
-            if q and q not in self.questions:
-                self.questions.append(q)
+    def parse(self, file):
+        self.questions = parse(file)
         return
 
     def __str__(self):
