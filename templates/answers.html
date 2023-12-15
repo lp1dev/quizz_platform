@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Hack.Courses | Quizzes
+    </title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/menu.css">
+    <link rel="stylesheet" href="/quizz.css">
+    <script src="/menu.js" type="text/javascript"></script>
+  </head>
+
+  <body onload="menu.init()">
+    <!-- Header Section -->
+    <div class="header">
+      <div id="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="site-title">quizz.hack.courses</div>
+    </div>
+    <!-- -->
+
+    <!-- Menu -->
+    <div id="menu">
+      <ul>
+        <a href="/"><li>Home</li></a>
+        <a href="https://hack.courses"><li>Back to hack.courses</li></a>
+        {% if user %}
+        <a href="https://auth.hack.courses"><li>Profile</li></a>
+        <a href="/completed"><li>Completed Quizzes</li></a>
+        <a href="https://auth.hack.courses/logout"><li>Logout</li></a>
+        {% else %}
+        <li>Login</li>
+        {% endif %}
+      </ul>
+    </div>
+    <!-- -->
+
+    <!-- Main content-->
+    <div class="container" id="quizz_header" style="background-image: url('{{quizz_template.image}}')">
+      <h1>{{ quizz_template.title }} </h1>
+    </div>
+    <div class="answers">
+        {%for question in quizz.questions %} 
+            <div class="question active {{ 'valid' if answers[question.id]['valid'] == True }}">
+                <h3><b>Question {{ question.id }} :</b> {{ question.title }}</h3>
+
+                {% for answer in question.answers %}
+                    <div>- <label>{{ answer['title'] }} 
+                     {% if answer['is_right'] %}
+                     ✅
+                     {% endif %}
+                    </label></div>
+                {% endfor %}
+
+              <div class="explanation">
+                > {{ question.explanation }}
+              </div>
+
+
+            </div>
+        {%endfor%}
+
+        <div class="summary">
+          <h3>You scored {{ completed_quizz.score }} / {{ completed_quizz.max_score }}.</h3>
+          {{ completed_quizz.message }}
+        </div>
+
+    </div>
+    <!-- -->
+
+  </body>
+
+</html>

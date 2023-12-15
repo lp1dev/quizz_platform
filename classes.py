@@ -9,19 +9,23 @@ Question,Question Type (multiple-choice or multi-select),Answer Option 1,Answer 
 
 def parse(file):
     csv_reader = csv.reader(file, delimiter=',')
+    print(csv_reader)
     questions = []
     for line in csv_reader:
+        print(line)
         if len(line) != 20:
             raise Exception("CSV file does not contain 20 fields in "+line)
         else:
-            q = Question(line[0], line[1], line[18], line[19])
+            q = Question(len(questions), line[0], line[1], line[18], line[19])
             for index, question in enumerate(line[2:-3]):
-                q.add_answer(question, index == int(line[17]))
+                if len(question):
+                    q.add_answer(question, (index + 1) == int(line[17]))
             questions.append(q)
-    return
+    return questions
 
 class Question:
-    def __init__(self, title, type, explanation, knowledge_area):
+    def __init__(self, id, title, type, explanation, knowledge_area):
+        self.id = id
         self.title = title
         self.type = type
         self.explanation = explanation
@@ -30,7 +34,7 @@ class Question:
         return
 
     def add_answer(self, answer, is_right):
-        self.answers.append({"title":answer, "is_right":is_right})
+        self.answers.append({"title":answer, "is_right":is_right, "id": "%s_%s" %(self.id, len(self.answers))})
     
     def __str__(self):
         return self.title + "%s" %self.answers
@@ -40,22 +44,7 @@ class Quizz:
         self.questions = []
         self.title = title
         with open(filename) as f:
-            self.parse(f)
-        return
-
-    def parse(self, file):
-        self.questions = parse(file)
-        return
+            self.questions = parse(f.readlines())
 
     def __str__(self):
         return self.title + "%s" %self.questions
-
-    def html(self):
-        output = f"""<h1>{self.title}</h1>
-<form method="POST"><h3>0 - Indiquez votre NOM + Prénom (utilisés pour la notation)</h3><div><input type="text" name="name" id="name"/></div>"""
-        for q_id, question in enumerate(self.questions):
-            output += f"""<h3>{question.title}</h3>"""
-            for count, answer in enumerate(question.answers):
-                output +=  f"""<div><input type="checkbox" id="{count}" name="{q_id}_{count}"><label>{escape(answer['title'])}</label></div>"""
-        output += "<br/><div><input type='submit' value='Valider mes réponses'/></div></form>"
-        return output

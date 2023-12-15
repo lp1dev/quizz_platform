@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Hack.Courses | Quizzes
+    </title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/menu.css">
+    <link rel="stylesheet" href="/quizz.css">
+    <script src="/menu.js" type="text/javascript"></script>
+    <script src="/quizz.js" type="text/javascript"></script>
+  </head>
+
+  <body onload="menu.init() && quizz.init()">
+    <!-- Header Section -->
+    <div class="header">
+      <div id="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="site-title">quizz.hack.courses</div>
+    </div>
+    <!-- -->
+
+    <!-- Menu -->
+    <div id="menu">
+      <ul>
+        <a href="https://hack.courses"><li>Back to hack.courses</li></a>
+        {% if user %}
+        <a href="https://auth.hack.courses"><li>Profile</li></a>
+        <a href="https://auth.hack.courses/logout"><li>Logout</li></a>
+        {% else %}
+        <li>Login</li>
+        {% endif %}
+
+      </ul>
+    </div>
+    <!-- -->
+
+    <!-- Main content-->
+    <div class="container" id="quizz_header" style="background-image: url('{{quizz_template.image}}')">
+      <h1>{{ quizz_template.title }} </h1>
+    </div>
+    <div class="quizz_container">
+            <form method="POST">
+        {%for question in quizz.questions %} 
+            <div class="question">
+                <h3><b>Question {{ question.id }} :</b> {{ question.title }}</h3>
+                {% if question.type == "multiple-choice" %}
+                <div></div>
+                {% endif %}
+                {% for answer in question.answers %}
+                    <div><input type="checkbox" id="{{ answer['id'] }}" name="{{ answer['id'] }}"/> <label for="{{ answer['id'] }}">{{ answer['title'] }}</label></div>
+                {% endfor %}
+
+                <div class="question_buttons">
+                    <button type="button" onclick="quizz.previous()"><=</button>
+                    <button type="button" onclick="quizz.next()">=></button>
+                </div>
+
+            </div>
+        {%endfor%}
+            <div class="question">
+                <h3>
+                    Are you sure you're all set? If you have verified your answers, click "End quizz" to validate them!
+                </h3>
+
+
+                <div class="question_buttons">
+                    <button type="button" onclick="quizz.previous()"><=</button>
+                    <button>End quizz</button>
+                </div>
+            </div>
+        </form>
+
+  
+    </div>
+    <!-- -->
+
+  </body>
+
+</html>

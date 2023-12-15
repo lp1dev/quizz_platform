@@ -25,7 +25,13 @@
     <div id="menu">
       <ul>
         <a href="https://hack.courses"><li>Back to hack.courses</li></a>
+        {% if user %}
+        <a href="https://auth.hack.courses"><li>Profile</li></a>
+        <a href="https://auth.hack.courses/logout"><li>Logout</li></a>
+        {% else %}
         <li>Login</li>
+        {% endif %}
+
       </ul>
     </div>
     <!-- -->
@@ -34,13 +40,16 @@
     <div class="container">
       <h1>Available Quizzes</h1>
     </div>
+  
     <div class="container">
+      <a href="quizz/CEHv12_10_questions">
       <photocard>
         <img src="ceh5.jpeg">
         <h2>CEHv12 - 10 questions</h2>
         <p>10 ethical hacking questions in the style of the C|EHv12 exam</p>
         <label class="free">free</label>
       </photocard>
+    </a>
     </div>
     <!-- -->
 

@@ -38,11 +38,13 @@ body, html {
     justify-content: center;
 }
 
+a photocard {
+    text-decoration: none !important;
+    color: #eee !important;
+}
+
 photocard {
     background-color: #333;
-    /* margin: 1.2rem 0.6rem; */
-    /* padding: 1.5rem; */
-    /* border-radius: 0.8rem; */
     display: flex;
     border-bottom: 1px solid #e2e2e299;
     border-right: 1px solid #e2e2e299; 

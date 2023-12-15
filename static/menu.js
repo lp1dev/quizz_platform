@@ -11,6 +11,7 @@
             window.menu.menu.style.display = window.menu.menu.style.display == "none" ? "block" : "none"
             console.log(e)
         }
+        return true;
     
     }
 })();
