@@ -4,12 +4,14 @@
     <title>
       hack.courses | Quizzes
     </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="menu.css">
-    <script src="menu.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/menu.css">
+    <link rel="stylesheet" href="/quizz.css">
+    <script src="/menu.js" type="text/javascript"></script>
+    <script src="/quizz.js" type="text/javascript"></script>
   </head>
 
-  <body onload="menu.init()">
+  <body onload="menu.init() && quizz.init()">
     <!-- Header Section -->
     <div class="header">
       <div id="hamburger-icon">
@@ -38,19 +40,19 @@
     <!-- -->
 
     <!-- Main content-->
-    <div class="container">
-      <h1>Available Quizzes</h1>
+    <div class="container" id="quizz_header">
+      <h1> Your completed quizzes </h1>
     </div>
-  
-    <div class="container">
-      <a href="quizz/CEHv12_10_questions">
-      <photocard>
-        <img src="ceh5.jpeg">
-        <h2>CEHv12 - 10 questions</h2>
-        <p>10 ethical hacking questions in the style of the C|EHv12 exam</p>
-        <label class="free">free</label>
-      </photocard>
-    </a>
+    <div class="quizz_container">
+        <ul>
+
+        {% for review in reviews %}
+        <li>
+            <a href="/review/{{review.id}}">{{review.quizz_name}} {{review.date}}</a>
+        </li>
+        {% endfor %}
+        </ul>
+
     </div>
     <!-- -->
 

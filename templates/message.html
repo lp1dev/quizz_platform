@@ -4,9 +4,9 @@
     <title>
       hack.courses | Quizzes
     </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="menu.css">
-    <script src="menu.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/menu.css">
+    <script src="/menu.js" type="text/javascript"></script>
   </head>
 
   <body onload="menu.init()">
@@ -39,20 +39,15 @@
 
     <!-- Main content-->
     <div class="container">
-      <h1>Available Quizzes</h1>
+      <h1>{{ message }}</h1>
     </div>
-  
+
+    {% if redirect %}
     <div class="container">
-      <a href="quizz/CEHv12_10_questions">
-      <photocard>
-        <img src="ceh5.jpeg">
-        <h2>CEHv12 - 10 questions</h2>
-        <p>10 ethical hacking questions in the style of the C|EHv12 exam</p>
-        <label class="free">free</label>
-      </photocard>
-    </a>
+      Redirecting to {{ redirect }} in 5 seconds...
+      <script>setTimeout(() => window.location = "{{ redirect }}", 5000);</script>
     </div>
-    <!-- -->
+    {% endif %}
 
     <div class="footer">
       <a href="/legal.html">

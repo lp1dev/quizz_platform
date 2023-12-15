@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      Hack.Courses | Quizzes
+      hack.courses | Quizzes
     </title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/menu.css">
@@ -26,14 +26,15 @@
     <!-- Menu -->
     <div id="menu">
       <ul>
+        <a href="/"><li>Home</li></a>
         <a href="https://hack.courses"><li>Back to hack.courses</li></a>
         {% if user %}
         <a href="https://auth.hack.courses"><li>Profile</li></a>
+        <a href="/completed"><li>Completed Quizzes</li></a>
         <a href="https://auth.hack.courses/logout"><li>Logout</li></a>
         {% else %}
         <li>Login</li>
         {% endif %}
-
       </ul>
     </div>
     <!-- -->
@@ -77,6 +78,16 @@
   
     </div>
     <!-- -->
+
+    <div class="footer">
+      <a href="/legal.html">
+        Legal Mentions
+      </a>
+      <a href="/privacy_policy.html">
+        Privacy Policy
+      </a>
+      <i>hosted by <a href="https://fenrir.pro">fenrir.pro</a></i>
+    </div>
 
   </body>
 

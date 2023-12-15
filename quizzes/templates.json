@@ -16,6 +16,7 @@
             "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
             "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
             "Congrats! You won!"
-        ]
+        ],
+        "retake": false
     }
 }

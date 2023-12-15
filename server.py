@@ -28,15 +28,34 @@ def index(user):
         return render_template("index.html", user=user)
 
 @app.route("/quizz/<quizz_id>", methods=["GET"])
-@token_required
+@token_optional
 def quizz_view(user, quizz_id):
-    print(user)
+    if user is None:
+        return render_template("message.html", message="You need to login first to access this section.", redirect="https://auth.hack.courses")
+    
     if quizz_id in quizzes.keys():
         quizz_template = quizzes_templates[quizz_id]
+        if quizz_template.get('retake') == False:
+            with Session(engine) as session:
+                query = select(CompletedQuizz).where(CompletedQuizz.quizz_id == quizz_id).where(CompletedQuizz.username == user['username'])
+                out = session.exec(query).one_or_none()
+                print(out)
+                if out is not None:
+                    return render_template("message.html", user=user, message="Sorry, this quizz can only be taken once. Stay tuned for the next ones to come to the platform!")
+
+    
         quizz = quizzes.get(quizz_id)
         return render_template("quizz.html", user=user, quizz=quizz, quizz_template=quizz_template)
     return "Quizz ID not found", 404
 
+
+@app.route("/completed", methods=["GET"])
+@token_required
+def get_completed(user):
+    with Session(engine) as session:
+        query = select(CompletedQuizz).where(CompletedQuizz.username == user['username'])
+        reviews = session.exec(query).all()
+    return render_template("completed.html", user=user, reviews=reviews)
 
 @app.route("/quizz/<quizz_id>", methods=["POST"])
 @token_required
@@ -65,8 +84,9 @@ def quizz_post(user, quizz_id):
     else:
         return "Invalid quizz ID", 404
     print(answers)
-    completed = CompletedQuizz(quizz_id=quizz_id, 
-                               email=user['email'], 
+    completed = CompletedQuizz(quizz_id=quizz_id,
+                               quizz_name = quizz_template['title'],
+                               username=user['username'], 
                                answers=json.dumps(answers), 
                                score=points, 
                                max_score=len(quizz.questions), 
@@ -89,7 +109,7 @@ def review(user, review_id):
         completed_quizz = session.exec(query).one_or_none()
         if completed_quizz is None:
             return "Invalid review ID", 404
-        if user['email'] != completed_quizz.email:
+        if user['username'] != completed_quizz.username:
             return "You do not have the required permissions to access this resource.", 403
         if completed_quizz.quizz_id not in quizzes.keys():
             return "Quizz ID not found", 404
