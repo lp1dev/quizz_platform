@@ -132,4 +132,4 @@ if __name__ == "__main__":
             q = Quizz(f, filename="quizzes/"+f)
             quizzes[f.replace(".csv", "")] = q
     print(quizzes)
-    app.run(threaded=True, debug=False)
+    app.run(threaded=True, debug=False, host="0.0.0.0")

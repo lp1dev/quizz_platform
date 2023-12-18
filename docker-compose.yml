@@ -1,0 +1,10 @@
+version: "3.3"
+
+services:
+  quizz:
+    build: .
+    image: hack_courses_quizz
+    ports:
+      - 5000:5000
+    hostname: quizz
+    

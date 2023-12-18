@@ -46,11 +46,10 @@ def token_optional(f):
                 user = r.json()
         except Exception as e:
             print(e)
-#            return {
-#                "message": "Something went wrong",
-#                "data": None,
-#                "error": str(e)
-#            }, 500
+            return {
+                "message": "Something went wrong",
+                "data": None,
+            }, 500
 
         return f(user, *args, **kwargs)
     return decorated

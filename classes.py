@@ -1,4 +1,3 @@
-from flask import escape
 import csv
 
 """ CSV HEADER 
