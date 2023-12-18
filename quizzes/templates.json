@@ -40,8 +40,8 @@
         "retake": true
     },
         "Web_Security": {
-        "title": "Web Security - 25 questions",
-        "description": "25 general questions about Web Security, Injections and hashing.",
+        "title": "Web Security - 26 questions",
+        "description": "26 general questions about Web Security, Injections and cryptography.",
         "image": "https://cdn.hack.courses/websec.jpeg",
         "price": 0,
         "messages": [
