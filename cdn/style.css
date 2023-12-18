@@ -24,6 +24,18 @@ body, html {
     text-align: left;
 }
 
+.form_section input {
+    padding: 0.5em;
+}
+
+.form_section button {
+    padding: 1em;
+}
+
+.form_section label {
+    margin-bottom: 0.5em;
+}
+
 .header {
     height: 3rem;
     width: 100%;
@@ -44,6 +56,10 @@ body, html {
     display: flex;
     text-align: center;
     justify-content: center;
+}
+
+.container form {
+    width: 30em;
 }
 
 a photocard {
