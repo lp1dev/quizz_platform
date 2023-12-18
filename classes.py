@@ -12,9 +12,11 @@ def parse(file):
     questions = []
     for line in csv_reader:
         print(line)
+        if len(line) == 0:
+            continue
         if len(line) != 20:
-            raise Exception("CSV file does not contain 20 fields in "+line)
-        else:
+            raise Exception("CSV file does not contain 20 fields in "+str(line))
+        elif len(line) > 0:
             q = Question(len(questions), line[0], line[1], line[18], line[19])
             for index, question in enumerate(line[2:-3]):
                 if len(question):

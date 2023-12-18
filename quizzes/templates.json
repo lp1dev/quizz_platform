@@ -18,5 +18,27 @@
             "Congrats! You won!"
         ],
         "retake": false
+    },
+    "Web_Servers": {
+        "title": "Web Servers - 25 questions",
+        "description": "25 general questions about Web Servers and the HTTP protocol.",
+        "image": "https://cdn.hack.courses/webservers.jpeg",
+        "price": 0,
+        "messages": [
+            "Oops, sorry you didn't succeed. You can try this one again if you like!",
+	    "Oops, sorry you didn't succeed. You can try this one again if you like!",
+	    "Oops, sorry you didn't succeed. You can try this one again if you like!",
+	    "Oops, sorry you didn't succeed. You can try this one again if you like!",
+	    "Oops, sorry you didn't succeed. You can try this one again if you like!",
+            "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
+	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
+	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
+	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
+	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
+            "Congrats! You got a perfect score!"
+        ],
+        "retake": true
     }
+
+
 }
