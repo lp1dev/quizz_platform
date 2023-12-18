@@ -18,9 +18,11 @@ def parse(file):
             raise Exception("CSV file does not contain 20 fields in "+str(line))
         elif len(line) > 0:
             q = Question(len(questions), line[0], line[1], line[18], line[19])
+            right_answers = [ int(index) for index in line[17].split(',') ]
+            
             for index, question in enumerate(line[2:-3]):
                 if len(question):
-                    q.add_answer(question, (index + 1) == int(line[17]))
+                    q.add_answer(question, (index + 1) in right_answers)
             questions.append(q)
     return questions
 

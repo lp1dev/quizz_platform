@@ -120,7 +120,7 @@ def review(user, review_id):
 
     toupdate = []
     for key in answers.keys():
-        toupdate += key
+        toupdate.append(key)
     for key in toupdate:
         answers[int(key)] = answers[key]
         del answers[key]
