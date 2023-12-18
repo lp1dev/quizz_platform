@@ -1,0 +1,39 @@
+#hamburger-icon {
+    padding-top: 0.4rem;
+}
+
+#hamburger-icon div {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    margin: 6px 0;
+}
+
+#menu {
+    display: none;
+    position: fixed;
+    top: 3.1rem;
+    width: 15rem;
+    padding: 0;
+    background-color: #111;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #eee;
+}
+
+#menu ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#menu li {
+    padding: 1rem 1rem;
+    border-bottom: 1px solid #222;
+}
+
+#menu li:hover {
+    background-color: #333;
+}
