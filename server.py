@@ -11,7 +11,7 @@ import json
 
 app = Flask(__name__, static_url_path='', static_folder='static', template_folder='templates')
 
-engine = create_engine("sqlite:///quizzes.db")
+engine = create_engine("sqlite:///db/quizzes.db")
 SQLModel.metadata.create_all(engine)
 
 quizzes_templates = json.load(open("quizzes/templates.json"))
@@ -21,11 +21,12 @@ quizzes = {}
 @app.route("/")
 @token_optional
 def index(user):
-    print(user)
-    if user is None:
-        return app.send_static_file("index.html")
-    else:
-        return render_template("index.html", user=user)
+    templates = []
+    for quizz in quizzes_templates.keys():
+        quizz_obj = quizzes_templates[quizz]
+        quizz_obj["id"] = quizz
+        templates.append(quizz_obj)
+    return render_template("index.html", user=user, quizzes_templates=templates)
 
 @app.route("/quizz/<quizz_id>", methods=["GET"])
 @token_optional

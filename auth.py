@@ -2,7 +2,7 @@ from flask import request
 from functools import wraps
 import requests
 
-AUTH_SERVER = "http://127.0.0.1:5001/"
+AUTH_SERVER = "http://hack.fenrir.lan:5001/"
 
 def token_required(f):
     @wraps(f)

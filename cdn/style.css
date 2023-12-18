@@ -2,7 +2,7 @@
     font-family: "unifont";
     font-style: "normal";
     font-weight: 400;
-    src: url("UnifontExMono.woff") format("woff");
+    src: url("//cdn.hack.courses/UnifontExMono.woff") format("woff");
 }
 
 body, html {
@@ -27,11 +27,12 @@ body, html {
 .header {
     height: 3rem;
     width: 100%;
-    border-bottom: 1px solid #e2e2e299;
+    border-bottom: 1px solid #23b0ff;
     line-height: 3rem;
     padding-left: 1rem;
     display: flex;
     flex-direction: row;
+    box-shadow: 5px 5px 30px rgb(0, 0, 0);
 }
 
 .site-title {
@@ -59,6 +60,7 @@ photocard {
     flex-direction: column;
     width: 25rem;
     border-radius: 2rem;
+    box-shadow: 5px 5px 30px rgb(0, 0, 0);
 }
 
 photocard img {
@@ -83,26 +85,33 @@ photocard .free {
 }
 
 a {
-    color: #64fb99 !important;
+    color: #23b0ff !important;
     text-decoration: none;
 }
 
 button {
     background-color: #222;
     color: #ddd;
-    border: 1px solid #64fb99;
+    border: 1px solid #23b0ff;
 }
 
 .footer {
-    position: absolute;
     width: 100%;
     bottom: 0;
-    border-top: 1px solid #e2e2e299;
+    border-top: 1px solid #23b0ff;
     display: flex;
     justify-content: space-evenly;
     padding: 3rem 0;
 }
 
+.abs {
+    position: absolute;
+}
+
 .legal {
     flex-direction: column;
+}
+
+.shadow {
+    box-shadow: 5px 5px 30px rgb(0, 0, 0);
 }

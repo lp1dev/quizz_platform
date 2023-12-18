@@ -2,7 +2,7 @@
     "CEHv12_10_questions": {
         "title": "CEHv12 - 10 questions",
         "description": "10 ethical hacking questions in the style of the C|EHv12 exam",
-        "image": "http://127.0.0.1:5000/ceh5.jpeg",
+        "image": "https://cdn.hack.courses/ceh5.jpeg",
         "price": 0,
         "messages": [
             "Oops, sorry you didn't succeed. Now you know which C|EH chapter you need to work on!",
