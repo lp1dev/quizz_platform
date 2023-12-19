@@ -30,10 +30,16 @@ body, html {
 
 .form_section button {
     padding: 1em;
+    margin: 1em 0;
+    width: 100%;
 }
 
 .form_section label {
     margin-bottom: 0.5em;
+}
+
+.form_section a {
+    width: 100%;
 }
 
 .header {
