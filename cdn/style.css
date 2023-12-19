@@ -64,11 +64,13 @@ body, html {
 
 .photocards {
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 a photocard {
     text-decoration: none !important;
     color: #eee !important;
+    margin: 1em;
 }
 
 photocard {
