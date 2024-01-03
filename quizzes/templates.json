@@ -15,7 +15,7 @@
             "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
             "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
             "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
-            "Congrats! You won!"
+            "Congrats! You got a perfect score!"
         ],
         "retake": false
     },
@@ -36,7 +36,7 @@
 	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
 	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
             "Congrats! You got a perfect score!"
-        ],
+    ],
         "retake": true
     },
         "Web_Security": {
@@ -55,6 +55,26 @@
 	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
 	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
 	    "You almost got it! Thanks for trying this quizz, you can try again to get a better score later!.",
+            "Congrats! You got a perfect score!"
+        ],
+        "retake": true
+    }, 
+    "NetworkPlus_25_questions": {
+        "title": "Network+ - 25 questions",
+        "description": "25 generic traning questions in the style of the Network+ exam",
+        "image": "https://cdn.hack.courses/netplus.jpeg",
+        "price": 0,
+        "messages": [
+            "Oops, sorry you didn't succeed. Now you know which chapters you need to work on!",
+            "Oops, sorry you didn't succeed. Now you know which chapters you need to work on!",
+            "Oops, sorry you didn't succeed. Now you know which chapters you need to work on!",
+            "Oops, sorry you didn't succeed. Now you know which chapters you need to work on!",
+            "Oops, sorry you didn't succeed. Now you know which chapters you need to work on!",
+            "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
+            "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
+            "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
+            "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
+            "You almost got it! Thanks for trying this quizz, you know which chapter to work on next time.",
             "Congrats! You got a perfect score!"
         ],
         "retake": true

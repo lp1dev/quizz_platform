@@ -11,7 +11,6 @@ def parse(file):
     print(csv_reader)
     questions = []
     for line in csv_reader:
-        print(line)
         if len(line) == 0:
             continue
         if len(line) != 20:
